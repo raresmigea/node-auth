@@ -1,6 +1,15 @@
 const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+
+//connect to database
+mongoose
+  .connect('mongodb+srv://raresmigea:notsodark@cluster0-ptmqz.mongodb.net/test',
+    { useNewUrlParser: true, useUnifiedTopology: true },
+  )
+  .then(() => console.log("MongoDB Connected"))
+  .catch((err) => console.log(err));
 
 const app = express();
 
