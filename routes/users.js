@@ -1,7 +1,6 @@
 
 const express = require('express');
 const router = express.Router();
-// const router = require('express-promise-router')();	//it's better than previous because it wraps the code in try-catch by itself
 const passport = require('passport');
 const passportConf = require('../passport');
 
@@ -17,7 +16,7 @@ router.route('/signup')
 
 //done by Passport.js
 router.route('/signin')
-	.post(UserController.signIn);
+	.post(validateBody(schemas.authSchema), passport.authenticate('local', { session: false }), UserController.signIn);
 
 //no need of validation here. we hold the token so we can access the data
 router.route('/secret')

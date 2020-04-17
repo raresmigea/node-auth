@@ -41,6 +41,8 @@ module.exports = {
 		//generate token
 		//here it will be done by Passport.js - will validate the user
 		//check if the user exists & generate a token
+		const token = signToken(req.user);
+		res.status(200).json({ token: token });
 		console.log('signIn');
 	},
 	secret: async (req, res, next) => {
