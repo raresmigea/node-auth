@@ -40,10 +40,12 @@ module.exports = {
 	signIn: async (req, res, next) => {
 		//generate token
 		//here it will be done by Passport.js - will validate the user
+		//check if the user exists & generate a token
 		console.log('signIn');
 	},
 	secret: async (req, res, next) => {
 		//no validations here
 		console.log('secret');
+		res.json({ secret: 'resource' });
 	}
 }
