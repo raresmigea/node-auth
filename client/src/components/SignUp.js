@@ -1,13 +1,28 @@
 import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
 
+import * as actions from '../actions';
 import CustomInput from './CustomInput';
 
  class SignUp extends Component {
+   constructor(props) {
+     super(props);
+     this.onSubmit = this.onSubmit.bind(this);
+   }
+
+   async onSubmit(formData) {
+     console.log('formData: ', formData);
+     //we need to call some actionCreator - from actions folder
+     //it should contact the backend server & dispatch some message for auth reducer
+     await this.props.signUp(formData);
+   }
   render() {
+    const { handleSubmit } = this.props;
     return (
       <div>
-        <form>
+        <form onSubmit={ handleSubmit(this.onSubmit) }>
           <fieldset>
             <Field
               name="email"
@@ -35,4 +50,7 @@ import CustomInput from './CustomInput';
   }
 }
 
-export default reduxForm({ form: 'signup' })(SignUp)
+export default compose(
+  connect(null, actions),
+  reduxForm({ form: 'signup' })
+)(SignUp)
