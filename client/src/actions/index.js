@@ -13,7 +13,7 @@ export const signUp = data => {
     1. use the data & make HTTP req to BE & send it along [x]
     2. take the BE response (jwtToken) [x]
     3. dispatch message: user just signed up [x]
-    4. save jwtToken into our localStorage
+    4. save jwtToken into our localStorage [x]
   */
   return async dispatch => {
     try {
@@ -24,6 +24,8 @@ export const signUp = data => {
           type: AUTH_SIGN_UP,
           payload: res.data.token
         });
+
+        localStorage.setItem('JWT_TOKEN', res.data.token);
     } catch (error) {
         console.log('error', error);
     }
