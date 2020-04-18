@@ -5,12 +5,12 @@ export default class CustomInput extends Component {
     const { input: { value, onChange } } = this.props;
     return (
       <div className="form-group">
-        <label htmlFor={ this.props.label }></label>
+        <label htmlFor={ this.props.id }>{ this.props.label }</label>
         <input
           name={ this.props.name }
           id={ this.props.id }
           placeholder={ this.props.placeholder }
-          className="form-name"
+          className="form-control"
           type={ this.props.type }
           value={ value }
           onChange= { onChange }
