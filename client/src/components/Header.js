@@ -1,30 +1,31 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'; //converts a tags to Link
 
 export default class Header extends Component {
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a className="navbar-brand"> Amazing API Auth </a>
+        <Link className="navbar-brand" to="/"> Amazing API Auth </Link>
 
         <div className="collapse navbar-collapse">
 
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
-              <a className="nav-link">Dashboard</a>
+              <Link className="nav-link" to="/dashboard">Dashboard</Link>
             </li>
           </ul>
 
           <ul className="nav navbar-nav ml-auto">
             <li className="nav-item">
-              <a className="nav-link">Sign up</a>
+              <Link className="nav-link" to="/signup">Sign up</Link>
             </li>
 
             <li className="nav-item">
-              <a className="nav-link">Sign in</a>
+              <Link className="nav-link" to="/signin">Sign in</Link>
             </li>
 
             <li className="nav-item">
-              <a className="nav-link">Sign out</a>
+              <Link className="nav-link" to="/signout">Sign out</Link>
             </li>
         </ul>
 
