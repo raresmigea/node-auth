@@ -9,16 +9,16 @@ const userSchema = new Schema({
     type: String,
     required: true, //not mandatory to write this because Joi check it
     unique: true,
-    lowercase: true
+    lowercase: true,
   },
   password: {
     type: String,
-    required: true //same as above
-  }
+    required: true, //same as above
+  },
 });
 
 //this function will run before save() is run
-userSchema.pre('save', async function(next) {
+userSchema.pre('save', async function (next) {
   try {
     //generate a salt
     const salt = await bcrypt.genSalt(10);
@@ -35,12 +35,13 @@ userSchema.pre('save', async function(next) {
 //a method to check if the introduced passwor matches the one from DB
 userSchema.methods.isValidPassword = async function (newPassword) {
   try {
-     //1st arg: plain text pass, 2nd: hashed pass
+    //1st arg: plain text pass, 2nd: hashed pass
     return await bcrypt.compare(newPassword, this.password); // returns boolean
-  } catch (error) { //cannot access next(), create error & throw it
+  } catch (error) {
+    //cannot access next(), create error & throw it
     throw new Error(error);
   }
-}
+};
 
 //create a model
 //1st arg: name of the model. will create +(s) in the collection
