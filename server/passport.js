@@ -1,12 +1,12 @@
-const passport = require('passport');
-const jwtStrategy = require('passport-jwt').Strategy; //sign up
-const { ExtractJwt } = require('passport-jwt');
-const LocalStrategy = require('passport-local').Strategy; // sign in
-const { JWT_SECRET } = require('./configuration');
-const User = require('./models/user');
+import { use } from 'passport';
+import { Strategy as jwtStrategy } from 'passport-jwt'; //sign up
+import { ExtractJwt } from 'passport-jwt';
+import { Strategy as LocalStrategy } from 'passport-local'; // sign in
+import { JWT_SECRET } from './configuration';
+import { findById, findOne } from './models/user';
 
 //JWT Strategy
-passport.use(
+use(
   new jwtStrategy(
     {
       jwtFromRequest: ExtractJwt.fromHeader('authorization'), //where the token will be contained
@@ -15,7 +15,7 @@ passport.use(
     async (payload, done) => {
       try {
         //take the data from the payload, find the user and return it
-        const user = await User.findById(payload.sub);
+        const user = await findById(payload.sub);
 
         //if user doesn't exist - handle it
         if (!user) {
@@ -32,7 +32,7 @@ passport.use(
 );
 
 //LOCAL Strategy
-passport.use(
+use(
   new LocalStrategy(
     {
       // interested in which way the user should be authorized
@@ -41,7 +41,7 @@ passport.use(
     async (email, password, done) => {
       try {
         //find the user by email
-        const user = await User.findOne({ email: email });
+        const user = await findOne({ email: email });
 
         //if not - handle it
         if (!user) {

@@ -1,17 +1,16 @@
-const express = require('express');
-const morgan = require('morgan');
-const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
-const cors = require('cors');
-const cookieParser = require('cookie-parser');
+import express, { json } from 'express';
+import morgan from 'morgan';
+import bodyParser from 'body-parser';
+import { connect } from 'mongoose';
+import cors from 'cors';
+import cookieParser from 'cookie-parser';
 
 // mongoose.Promise = global.Promise;
 //connect to database
-mongoose
-  .connect(
-    'mongodb+srv://raresmigea:notsodark@cluster0-ptmqz.mongodb.net/test',
-    { useNewUrlParser: true, useUnifiedTopology: true }
-  )
+connect('mongodb+srv://raresmigea:notsodark@cluster0-ptmqz.mongodb.net/test', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
   .then(() => console.log('MongoDB Connected'))
   .catch((err) => console.log(err));
 
@@ -30,9 +29,9 @@ if (!process.env.NODE_ENV === 'test') {
   app.use(morgan('dev'));
 }
 
-app.use(express.json());
+app.use(json());
 
 // Routes
 app.use('/users', require('./routes/users'));
 
-module.exports = app;
+export default app;
