@@ -1,6 +1,6 @@
 import express, { json } from 'express';
 import morgan from 'morgan';
-import bodyParser from 'body-parser';
+// import bodyParser from 'body-parser';
 import { connect } from 'mongoose';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';

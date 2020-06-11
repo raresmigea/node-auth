@@ -1,7 +1,7 @@
 import { Router } from 'express';
 const router = Router();
 import { authenticate } from 'passport';
-import passportConf from '../passport';
+// import passportConf from '../passport';
 
 import { validateBody, schemas } from '../helpers/routerHelpers';
 import { signUp, signIn, secret } from '../controllers/users';
