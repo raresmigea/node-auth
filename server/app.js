@@ -1,11 +1,9 @@
 import express, { json } from 'express';
 import morgan from 'morgan';
-// import bodyParser from 'body-parser';
 import { connect } from 'mongoose';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 
-// mongoose.Promise = global.Promise;
 //connect to database
 connect('mongodb+srv://raresmigea:notsodark@cluster0-ptmqz.mongodb.net/test', {
   useNewUrlParser: true,
