@@ -4,5 +4,3 @@ import { listen } from './app';
 const port = process.env.PORT || 5000;
 listen(port);
 console.log(`Server listening at ${port}`);
-
-// refactored code for easier test and feature scale
