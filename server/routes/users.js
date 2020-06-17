@@ -21,7 +21,8 @@ router
     signIn
   );
 
-//no need of validation here. we hold the token so we can access the data
+//no need of validation here
+//we hold the token so we can access the data
 router.route('/secret').get(authenticate('jwt', { session: false }), secret);
 
 export default router;
