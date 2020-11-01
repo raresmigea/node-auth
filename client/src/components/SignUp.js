@@ -14,8 +14,8 @@ class SignUp extends Component {
 
   async onSubmit(formData) {
     console.log('formData: ', formData);
-    //we need to call some actionCreator - from actions folder
-    //it should contact the backend server & dispatch some message for auth reducer
+    // we need to call some actionCreator - from actions folder
+    // it should contact the backend server & dispatch some message for auth reducer
     await this.props.signUp(formData);
   }
   render() {
