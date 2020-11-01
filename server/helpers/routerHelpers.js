@@ -3,16 +3,16 @@ const Joi = require('joi'); // helps validating the schema
 module.exports = {
   // everything will be exported
   validateBody: (schema) => {
-    //one function - takes a schema as arg
+    // one function - takes a schema as arg
     return (req, res, next) => {
-      //check the data
+      // check the data
       const result = Joi.validate(req.body, schema);
       if (result.error) {
         return res.status(400).json(result.error); //pass it to client
       }
-      //if no error - attach to req obj a prop called value
-      //& to value - a prop called body
-      //it will be: req.value.body instead of req.body
+      // if no error - attach to req obj a prop called value
+      // & to value - a prop called body
+      // it will be: req.value.body instead of req.body
       if (!req.value) {
         req.value = {}; //initialize it if doesn't exist
       }
