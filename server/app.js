@@ -4,7 +4,7 @@ import { connect } from 'mongoose';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 
-//connect to database
+// connect to database
 connect('mongodb+srv://raresmigea:notsodark@cluster0-ptmqz.mongodb.net/test', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
