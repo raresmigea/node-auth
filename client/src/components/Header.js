@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'; // converts <a> tags to Link
+import { Link } from 'react-router-dom'; // converts <a> tag to Link
 
 export default class Header extends Component {
   render() {
